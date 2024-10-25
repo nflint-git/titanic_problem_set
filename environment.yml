@@ -1,0 +1,9 @@
+name: titanic_env
+dependencies:
+  - python=3.11
+  - pandas
+  - matplotlib
+  - jupyter
+  - numpy
+  - seaborn
+  - scikit-learn
