@@ -80,3 +80,8 @@ def agg_data(df1,df2):
     all_df["set"] = "train"
     all_df.loc[all_df.Survived.isna(), "set"] = "test" #since the test data does not have a survived column as often this is what we would try to predict
     return all_df
+
+#creating new columns
+def add_fam(data):
+    data["FamilySize"] = data["SibSp"] + data["Parch"] + 1
+    return data
