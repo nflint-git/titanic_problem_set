@@ -81,7 +81,24 @@ def agg_data(df1,df2):
     all_df.loc[all_df.Survived.isna(), "set"] = "test" #since the test data does not have a survived column as often this is what we would try to predict
     return all_df
 
-#creating new columns
+#creating new columns/vars
 def add_fam(data):
     data["FamilySize"] = data["SibSp"] + data["Parch"] + 1
+    return data
+
+def add_age(data):
+    data["AgeInterval"] = 0.0
+    data.loc[ data['Age'] <= 16, 'AgeInterval']  = 0
+    data.loc[(data['Age'] > 16) & (data['Age'] <= 32), 'AgeInterval'] = 1
+    data.loc[(data['Age'] > 32) & (data['Age'] <= 48), 'AgeInterval'] = 2
+    data.loc[(data['Age'] > 48) & (data['Age'] <= 64), 'AgeInterval'] = 3
+    data.loc[ data['Age'] > 64, 'AgeInterval'] = 4
+    return data
+
+def add_fare(data):
+    data['FareInterval'] = 0.0
+    data.loc[ data['Fare'] <= 7.91, 'FareInterval'] = 0
+    data.loc[(data['Fare'] > 7.91) & (data['Fare'] <= 14.454), 'FareInterval'] = 1
+    data.loc[(data['Fare'] > 14.454) & (data['Fare'] <= 31), 'FareInterval']   = 2
+    data.loc[ data['Fare'] > 31, 'FareInterval'] = 3
     return data
