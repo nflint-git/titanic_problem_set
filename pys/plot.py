@@ -9,6 +9,7 @@ def string_to_list(input_string):
 
 
 #countplot function that allows inserted df, columns, and hue to be arguments with the very latter being optional
+# since I separate the string, the vars all have to be one word -> something to fix later
 def count_plot(df, columns, hue=None):
     df = df.reset_index(drop=True)
     columns = string_to_list(columns)
